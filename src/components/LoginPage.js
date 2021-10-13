@@ -1,4 +1,6 @@
 import React from 'react';
+import AppMode from './AppMode';
+import FeedPage from './FeedPage';
 
 class LoginPage extends React.Component {
     render() {
@@ -42,7 +44,7 @@ class LoginPage extends React.Component {
                     </div>
                 <p></p>
                 <button type="submit" id="loginBtn" 
-                        className="btn btn-primary fm-primary-btn">
+                        className="btn btn-primary fm-primary-btn" onClick={this.props.handleLogin}>
                     <span id="loginBtnIcon" 
                         className="fas fa-sign-in-alt" 
                         aria-hidden="true"></span>

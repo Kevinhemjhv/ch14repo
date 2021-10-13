@@ -3,6 +3,7 @@ import NavBar from './NavBar.js';
 import ModeTabs from './ModeTabs.js';
 import LoginPage from './LoginPage.js';
 import AppMode from './AppMode.js';
+import FeedPage from './FeedPage.js';
 
 class App extends React.Component {
 
@@ -15,6 +16,7 @@ class App extends React.Component {
   }
 
   setMode = (newMode) => {
+    
     this.setState({mode: newMode});
   }
 
@@ -28,6 +30,11 @@ class App extends React.Component {
 
   setUserId = (Id) => {
     this.setState({userId: Id});
+  }
+
+  handleLogin = () => {
+    
+    this.setState({mode: "FeedMode"})
   }
 
   render() {
@@ -45,12 +52,15 @@ class App extends React.Component {
                     setMode={this.setMode} 
                     menuOpen={this.state.menuOpen}
                     modalOpen={this.state.modalOpen}/> 
-            : null }
+            :
         <LoginPage changeMode={this.handleChangeMode}
                    menuOpen={this.state.menuOpen}
                    modalOpen={this.state.dialogOpen}
                    toggleModalOpen={this.state.toggleModalOpen} 
-                   userid={this.state.userId}/>
+                   handleLogin={this.handleLogin}
+                   userid={this.state.userId}/>}
+            {this.state.mode == AppMode.FEED &&
+            <FeedPage/>}
       </>
     ); 
   }
